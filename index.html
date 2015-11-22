@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!--
+	Interphase by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Tillage</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		 <script type="text/javascript" src="proj4js/dist/proj4.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<style type="text/css">
+	      html, body { height: 100%; margin: 0; padding: 0; }
+	      #map { height: 900px; width: 95%; margin-top: -200px;
+	      	margin-bottom: -200px;
+	      	 position: fixed;
+	      	margin-left: auto;
+	      	margin-right: auto;
+	      }
+    	</style>
+	</head>
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">Tillage</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="generic.html">About Us</a></li>
+						<li><a href="elements.html">Login</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Banner -->
+			<section id="banner">
+				<input id="pac-input" class="controls" type="text" placeholder="Search your location"> </input>
+				<div id="map"></div>
+			</section>
+    	
+    <script type="text/javascript">
+
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 42.029900, lng: -93.638396},
+          zoom: 5,
+          mapTypeId: google.maps.MapTypeId.SATELLITE
+        }); 
+
+        var input = document.getElementById('pac-input');
+          var searchBox = new google.maps.places.SearchBox(input);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
+          });
+          var markers = [];
+          // Listen for the event fired when the user selects a prediction and retrieve
+          // more details for that place.
+          searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+              return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function(marker) {
+              marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+              var icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+              };
+
+              // Create a marker for each place.
+              markers.push(new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location
+              }));
+
+              if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+              } else {
+                bounds.extend(place.geometry.location);
+              }
+            });
+            map.fitBounds(bounds);
+          });
+
+        // Send networking request for County lands
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", 'https://raw.githubusercontent.com/dongparty/KS-kml/master/naip_1-1_2n_s_ia001_2004_1.json', false );
+        xmlHttp.send( null );
+        var res = xmlHttp.responseText;
+
+        var obj = JSON.parse(res)['geometries'];
+        for (var i = 0; i < obj.length; i++) {
+          var coords = obj[i]['coordinates'][0];
+          var shapeCoords = [];
+          for (var j = 0; j < coords.length; j++) {
+            
+             var x = coords[j][0];
+             var y = coords[j][1];
+                          var utm = "+proj=utm +zone=15";
+            var wgs84 = "+proj=longlat +ellps=NAD83 +datum=NAD83 +no_defs";
+            var latLong = proj4(utm,wgs84,[x, y]);
+            shapeCoords.push({lat: latLong[1], lng:  latLong[0] });
+          }
+          var shape = new google.maps.Polygon({
+            paths: shapeCoords,
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35
+          });
+          shape.setMap(map);
+        };
+
+        
+        // var contentString = "<div>Call Mac Liu @ 402-981-2517 to discuss more about this land</div>";
+
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: contentString
+        // });
+        // var marker = new google.maps.Marker({
+        //   position: {lat: 42.02, lng: -93.63},
+        //   map: map,
+        //   title: 'The Macs Land'
+        // });
+        // marker.addListener('click', function() {
+        //   infowindow.open(map, marker);
+        // });
+    }
+    
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSi1ORbsw9lI4LwK0oGX0jGyh086knJk&libraries=places&callback=initMap">
+    </script>
+
+		<!-- One -->
+			<section id="one" class="wrapper style1 align-center">
+				<div class="container">
+					<header>
+						<h2>Consectetur adipisicing elit</h2>
+						<p>Lorem ipsum dolor sit amet adipisicing elit. Delectus consequatur sed tempus.</p>
+					</header>
+					<div class="row 200%">
+						<section class="4u 12u$(small)">
+							<i class="icon big rounded fa-clock-o"></i>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
+						</section>
+						<section class="4u 12u$(small)">
+							<i class="icon big rounded fa-comments"></i>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime molestiae.</p>
+						</section>
+						<section class="4u$ 12u$(small)">
+							<i class="icon big rounded fa-user"></i>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
+						</section>
+					</div>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2 align-center">
+				<div class="container">
+					<header>
+						<h2>Lorem ipsum dolor sit</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, autem.</p>
+					</header>
+					<div class="row">
+						<section class="feature 6u 12u$(small)">
+							<img class="image fit" src="images/pic01.jpg" alt="" />
+							<h3 class="title">Lorem ipsum dolor</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ipsa voluptate, quae quibusdam. Doloremque similique, reiciendis sit quibusdam aperiam? Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						</section>
+						<section class="feature 6u$ 12u$(small)">
+							<img class="image fit" src="images/pic02.jpg" alt="" />
+							<h3 class="title">Esse, fugiat, in</h3>
+							<p>Natus perspiciatis fugit illum porro iusto fuga nam voluptas minima voluptates deserunt, veniam reiciendis harum repellat necessitatibus. Animi, adipisci qui. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						</section>
+						<section class="feature 6u 12u$(small)">
+							<img class="image fit" src="images/pic03.jpg" alt="" />
+							<h3 class="title">Voluptates, repudiandae, dolor</h3>
+							<p>Voluptatibus repellendus tempora, quia! Consequuntur atque, rerum quis, ullam labore officiis ipsa beatae dolore, assumenda eos harum repudiandae, qui ab! Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						</section>
+						<section class="feature 6u$ 12u$(small)">
+							<img class="image fit" src="images/pic04.jpg" alt="" />
+							<h3 class="title">Eveniet, reiciendis, veniam</h3>
+							<p>Rem nulla molestiae inventore quibusdam repudiandae doloremque eveniet ullam, qui autem possimus saepe laudantium numquam sapiente vel. Repudiandae, nihil tempore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						</section>
+					</div>
+					<footer>
+						<ul class="actions">
+							<li>
+								<a href="#" class="button alt big">Learn More</a>
+							</li>
+						</ul>
+					</footer>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<h3>Lorem ipsum</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, cumque!</p>
+							<ul class="alt">
+								<li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+								<li><a href="#">Quod adipisci perferendis et itaque.</a></li>
+								<li><a href="#">Itaque eveniet ullam, veritatis reiciendis?</a></li>
+								<li><a href="#">Accusantium repellat accusamus a, soluta.</a></li>
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<h3>Nostrum, repellat!</h3>
+							<p>Tenetur voluptate exercitationem eius tempora! Obcaecati suscipit, soluta earum blanditiis.</p>
+							<ul class="alt">
+								<li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+								<li><a href="#">Id inventore, qui necessitatibus sunt.</a></li>
+								<li><a href="#">Deleniti eum odit nostrum eveniet.</a></li>
+								<li><a href="#">Illum consectetur quibusdam eos corporis.</a></li>
+							</ul>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Contact Us</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon rounded fa-pinterest"><span class="label">Pinterest</span></a></li>
+								<li><a href="#" class="icon rounded fa-google-plus"><span class="label">Google+</span></a></li>
+								<li><a href="#" class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Address</h3>
+									1234 Somewhere Road<br>
+									Nashville, TN 00000
+								</li>
+								<li>
+									<h3>Mail</h3>
+									<a href="#">someone@untitled.tld</a>
+								</li>
+								<li>
+									<h3>Phone</h3>
+									(000) 000-0000
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+			</footer>
+
+	</body>
+</html>
