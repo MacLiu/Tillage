@@ -965,6 +965,7 @@
 		color: #ffffff;
 		padding: 16em 0em 14em;
 		text-align: center;
+		display: inline;
 	}
 
 		#banner h2 {
@@ -1267,3 +1268,7 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
  .signin {
  	text-align: center;
  }
+
+#one {
+	margin-top: 150px;
+}

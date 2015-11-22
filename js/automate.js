@@ -1,8 +1,11 @@
 
 $(document).ready(function() {
+	checkHeight();
+	$(window).resize(function() {
+		checkHeight();
+	});
 
-	document.getElementById('nav-div').style.height = document.getElementById('banner').style.height;
-
+	//Displays the Login popup
 	$('a.login-window').click(function() {
 		
 		// Getting the variable's value from a link 
@@ -47,3 +50,16 @@ $(document).ready(function() {
 	    }
 	  });
 });
+
+function checkHeight() {
+		if ($(window).width() < 980) {
+			$('#nav-div').css('height', '0');
+
+		}
+		else if ($(window).width() < 1680) {
+			$('#nav-div').css('height', '205px');
+		}
+		else {
+			$('#nav-div').css('height', '215px');
+		}
+}
