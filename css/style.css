@@ -1098,7 +1098,11 @@
   left: -50%;
   vertical-align: center;
  }
-
+.navbar-text {
+	font-family: lato;
+	font-size: 150% ;
+	font-weight: 500;
+}
 .pplimg {
 	border-radius: 200px;
     background: #FFFFFF;
