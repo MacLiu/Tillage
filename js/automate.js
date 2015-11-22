@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 function checkHeight() {
 		if ($(window).width() < 980) {
-			$('#nav-div').css('height', '0');
+			$('#nav-div').css('height', '123px');
 
 		}
 		else if ($(window).width() < 1680) {
