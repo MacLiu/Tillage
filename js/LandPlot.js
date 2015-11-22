@@ -1,5 +1,6 @@
-// Green - #409e5b
-// Red - #cc4029
+
+var RED = '#cf2a0e';
+var YELLOW = '#e3d430';
 
 //Osceola
 function createOsceola() {
@@ -99,10 +100,10 @@ function createOsceola() {
 			if (isRed[i]) {
 				var theField = new google.maps.Polygon({
 			        paths: listings[i],
-			        strokeColor: '#cc4029',
+			        strokeColor: RED,
 			        strokeOpacity: 0.8,
 			        strokeWeight: 2,
-			        fillColor: '#cc4029',
+			        fillColor: RED,
 			        fillOpacity: 0.35,
 		        title: 'hello'
 			    });
@@ -120,10 +121,10 @@ function createOsceola() {
 			} else {
 				var theField = new google.maps.Polygon({
 			        paths: listings[i],
-			        strokeColor: '#409e5b',
+			        strokeColor: YELLOW,
 			        strokeOpacity: 0.8,
 			        strokeWeight: 2,
-			        fillColor: '#409e5b',
+			        fillColor: YELLOW,
 			        fillOpacity: 0.35,
 			        title: 'hello'
 			    });
