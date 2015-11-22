@@ -14,6 +14,9 @@
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
 		 <script type="text/javascript" src="proj4js/dist/proj4.js"></script>
+		 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		 <script type="text/javascript" src="js/automate.js"></script>
+
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -28,6 +31,8 @@
 	      	margin-right: auto;
 	      }
     	</style>
+    	<link rel="canonical" href="http://www.alessioatzeni.com/wp-content/tutorials/jquery/login-box-modal-dialog-window/index.html" />
+
 	</head>
 	<body class="landing">
 
@@ -38,9 +43,33 @@
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="#one">About Us</a></li>
-						<li><a href="">Login</a></li>
+						<li><a href="#login-box" class="login-window">Login</a></li>
 					</ul>
+					<div id="login-box" class="login-popup">
+			        <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+			          <form method="post" class="signin" action="#">
+			                <fieldset class="textbox">
+			            	<label class="username">
+			                <span>Username or email</span>
+			                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+			                </label>
+			                
+			                <label class="password">
+			                <span>Password</span>
+			                <input id="password" name="password" value="" type="password" placeholder="Password">
+			                </label>
+			                
+			                <button class="submit button" type="button">Sign in</button>
+			                
+			                <p>
+			                <a class="forgot" href="#">Forgot your password?</a>
+			                </p>
+			                
+			                </fieldset>
+			          </form>
+					</div>
 				</nav>
+
 			</header>
 
 		<!-- Banner -->
