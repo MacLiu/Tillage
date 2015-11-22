@@ -1,5 +1,7 @@
 
 $(document).ready(function() {
+	$('#skel-layers-hiddenWrapper').remove();
+
 	checkHeight();
 	$(window).resize(function() {
 		checkHeight();
