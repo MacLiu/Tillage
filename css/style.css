@@ -871,8 +871,8 @@
 		background-color: #202222;
 		color: #ffffff;
 		cursor: default;
-		height: 4.75em;
-		line-height: 4.75em;
+		height: 3.25em;
+		line-height: 3.25em;
 		width: 100%;
 		z-index: 10000;
 	}
@@ -1096,13 +1096,9 @@
   height: 60%;
   position: relative;
   left: -50%;
-  vertical-align: center;
+  vertical-align: 20%;
  }
-.navbar-text {
-	font-family: lato;
-	font-size: 150% ;
-	font-weight: 500;
-}
+
 .pplimg {
 	border-radius: 200px;
     background: #FFFFFF;
@@ -1114,8 +1110,8 @@
   }
 
  #pac-input {
- 	width: 90%;
- 	margin-top: 7px;
+ 	margin-left: -15px;
+ 	width: 100%;
  	background-color: white;
  }
 
