@@ -1094,10 +1094,9 @@
 
 #navbar-logo {
   height: 60%;
-  margin-top: 5px;
   position: relative;
   left: -50%;
-  top: -15%;
+  vertical-align: center;
  }
 
 .pplimg {
@@ -1111,8 +1110,9 @@
   }
 
  #pac-input {
- 	margin-top: 7px;
- 	width:  30%;
+ 	margin-left: -15px;
+ 	width: 100%;
+ 	background-color: white;
  }
 
 
