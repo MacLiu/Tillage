@@ -1233,7 +1233,7 @@ form.signin .textbox input {
 form.signin input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
 form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
 
-.button { 
+.submit { 
 	background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
 	background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
 	background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
@@ -1253,4 +1253,17 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
 }
 
 .button:hover { background:#ddd; }
- 
+
+#username {
+	margin-left: auto;
+	margin-right: auto;
+ }
+
+ #password {
+	margin-left: auto;
+	margin-right: auto;
+ }
+
+ .signin {
+ 	text-align: center;
+ }
