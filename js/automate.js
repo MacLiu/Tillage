@@ -1,4 +1,8 @@
+
 $(document).ready(function() {
+
+	document.getElementById('nav-div').style.height = document.getElementById('banner').style.height;
+
 	$('a.login-window').click(function() {
 		
 		// Getting the variable's value from a link 
