@@ -1093,5 +1093,15 @@
 
 #navbar-logo {
   width: auto;
-  height: 36px;
+  height: 50%;
+  }
+
+.pplimg {
+	border-radius: 200px;
+    background: #FFFFFF;
+    padding: 2px; 
+    width: auto;
+    height: 150px;
+
+
   }
