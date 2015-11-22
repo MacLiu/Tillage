@@ -1059,7 +1059,7 @@
 		}
 
 			#footer a:active, #footer a:hover {
-				color: #ffffff;
+				background: url("../images/cornfield.jpg"), url("../images/banner.jpg");
 			}
 
 		#footer .icons .rounded {
@@ -1269,10 +1269,11 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
  	text-align: center;
  }
 
+ #learn-more-button {
+ 	margin-left: auto;
+ 	margin-right: auto;
+ }
+
 #one {
 	margin-top: 150px;
-}
-
-#learn-more-button {
-	background-color: white;
 }
