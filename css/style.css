@@ -1250,4 +1250,17 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
 }
 
 .button:hover { background:#ddd; }
- 
+
+#username {
+	margin-left: auto;
+	margin-right: auto;
+ }
+
+ #password {
+	margin-left: auto;
+	margin-right: auto;
+ }
+
+ .signin {
+ 	text-align: center;
+ }
