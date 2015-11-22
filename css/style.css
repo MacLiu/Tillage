@@ -957,7 +957,7 @@
 /* Banner */
 
 	#banner {
-		background: url("http://static1.squarespace.com/static/5650ad63e4b0a58f184cb0bc/5650adc6e4b018da2a5e0661/5650adc6e4b018da2a5e0662/1448127952386/10595366295_61eaca65ff_o.jpg"), url("../images/banner.jpg");
+		background: url("../images/cornfield.jpg"), url("../images/banner.jpg");
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
