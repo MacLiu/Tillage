@@ -24,7 +24,7 @@
 		</noscript>
 		<style type="text/css">
 	      html, body { height: 100%; margin: 0; padding: 0; }
-	      #map { height: 900px; width: 100%; margin-top: -150px;
+	      #map { height: 900px; width: 95%; margin-top: -150px;
 	      	margin-bottom: -200px;
 	      	 position: fixed;
 	      	margin-left: auto;
@@ -35,12 +35,13 @@
 
 	</head>
 	<body class="landing">
+
 		<!-- Header -->
 			<header id="header">
 				<h1><a href="index.html"> <img id="navbar-logo" src="images/Logonew.png"> </a></h1>
 				<nav id="nav">
 					<ul>
-						<li><a href="#nav-div">Home</a></li>
+						<li><a href="index.html">Home</a></li>
 						<li><a href="#one">About Us</a></li>
 						<li><a href="#login-box" class="login-window">Login</a></li>
 					</ul>
@@ -66,14 +67,11 @@
 				</nav>
 
 			</header>
-			<div id="nav-div" style="height:65px;">
-			</div>
 
 		<!-- Banner -->
 			<section id="banner">
+				<input id="pac-input" class="controls" type="text" placeholder="Search your location"> </input>
 				<div id="map"></div>
-								<input id="pac-input" class="controls" type="text" placeholder="Search your location"> </input>
-
 			</section>
     	
 		    <script type="text/javascript">
@@ -258,9 +256,9 @@
 			</section>
 
 		<!-- Two -->
-			<!--<section id="two" class="wrapper style2 align-center">
+			<section id="two" class="wrapper style2 align-center">
 				<div class="container">
-					<header>
+					<!--<header>
 						<h2>Lorem ipsum fjeknwafj sit</h2>
 						<p>Lorem ipsum fajnekfnaje sit amet, consectetur adipisicing elit. Distinctio, autem.</p>
 					</header>
@@ -287,9 +285,11 @@
 						</section>
 					</div>-->
 					<footer>
-						<ul class="actions">
+						<ul id="learn-more-button" class="actions">
 							<li>
-								<a href="https://scott-kubie-duzc.squarespace.com/" class="button alt big">Learn More</a>
+								<a href="https://scott-kubie-duzc.squarespace.com/" 
+								class="button alt big">Learn More</a>
+					
 							</li>
 						</ul>
 					</footer>
