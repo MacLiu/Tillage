@@ -16,7 +16,7 @@
 		 <script type="text/javascript" src="proj4js/dist/proj4.js"></script>
 		 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		 <script type="text/javascript" src="js/automate.js"></script>
-
+		 <script type="text/javascript" src="js/LandPlot.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -81,7 +81,10 @@
 		        map = new google.maps.Map(document.getElementById('map'), {
 		          center: {lat: 42.029900, lng: -93.638396},
 		          zoom: 5,
-		          mapTypeId: google.maps.MapTypeId.SATELLITE
+		          mapTypeId: google.maps.MapTypeId.HYBRID,
+				      mapTypeControlOptions: {
+					 	style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+				      }
 		        }); 
 
 		        var input = document.getElementById('pac-input');
@@ -136,35 +139,48 @@
 		            map.fitBounds(bounds);
 		          });
 
-		        // Send networking request for County lands
-		        var xmlHttp = new XMLHttpRequest();
-		        xmlHttp.open( "GET", 'https://raw.githubusercontent.com/dongparty/KS-kml/master/naip_1-1_2n_s_ia001_2004_1.json', false );
-		        xmlHttp.send( null );
-		        var res = xmlHttp.responseText;
+		        // // Send networking request for County lands
+		        // var xmlHttp = new XMLHttpRequest();
+		        // xmlHttp.open( "GET", 'https://raw.githubusercontent.com/dongparty/KS-kml/master/naip_1-1_2n_s_ia001_2004_1.json', false );
+		        // xmlHttp.send( null );
+		        // var res = xmlHttp.responseText;
 
-		        var obj = JSON.parse(res)['geometries'];
-		        for (var i = 0; i < obj.length; i++) {
-		          var coords = obj[i]['coordinates'][0];
-		          var shapeCoords = [];
-		          for (var j = 0; j < coords.length; j++) {
+		        // var obj = JSON.parse(res)['geometries'];
+		        // for (var i = 0; i < obj.length; i++) {
+		        //   var coords = obj[i]['coordinates'][0];
+		        //   var shapeCoords = [];
+		        //   for (var j = 0; j < coords.length; j++) {
 		            
-		             var x = coords[j][0];
-		             var y = coords[j][1];
-		                          var utm = "+proj=utm +zone=15";
-		            var wgs84 = "+proj=longlat +ellps=NAD83 +datum=NAD83 +no_defs";
-		            var latLong = proj4(utm,wgs84,[x, y]);
-		            shapeCoords.push({lat: latLong[1], lng:  latLong[0] });
-		          }
-		          var shape = new google.maps.Polygon({
-		            paths: shapeCoords,
-		            strokeColor: '#FF0000',
-		            strokeOpacity: 0.8,
-		            strokeWeight: 2,
-		            fillColor: '#FF0000',
-		            fillOpacity: 0.35
-		          });
-		          shape.setMap(map);
-		        };
+		        //      var x = coords[j][0];
+		        //      var y = coords[j][1];
+		        //                   var utm = "+proj=utm +zone=15";
+		        //     var wgs84 = "+proj=longlat +ellps=NAD83 +datum=NAD83 +no_defs";
+		        //     var latLong = proj4(utm,wgs84,[x, y]);
+		        //     shapeCoords.push({lat: latLong[1], lng:  latLong[0] });
+		        //   }
+		        //   if (i % 2 == 0) {
+			       //    var shape = new google.maps.Polygon({
+			       //      paths: shapeCoords,
+			       //      strokeColor: '#FF0000',
+			       //      strokeOpacity: 0.8,
+			       //      strokeWeight: 2,
+			       //      fillColor: '#FF0000',
+			       //      fillOpacity: 0.35
+			       //    });
+			       //    shape.setMap(map);
+		        //   } else {
+			       //    var shape = new google.maps.Polygon({
+			       //      paths: shapeCoords,
+			       //      strokeColor: '#00FF00',
+			       //      strokeOpacity: 0.8,
+			       //      strokeWeight: 2,
+			       //      fillColor: '#00FF00',
+			       //      fillOpacity: 0.35
+			       //    });
+			       //    shape.setMap(map);
+		        //   }
+
+		        // };
 
 		        
 		        // var contentString = "<div>Call Mac Liu @ 402-981-2517 to discuss more about this land</div>";
@@ -180,6 +196,8 @@
 		        // marker.addListener('click', function() {
 		        //   infowindow.open(map, marker);
 		        // });
+				createOsceola();
+				
 		    }
 		    
 		    </script>

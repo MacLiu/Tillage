@@ -1105,14 +1105,13 @@
     padding: 2px; 
     width: auto;
     height: 150px;
-
-
-  }
+ }
 
  #pac-input {
  	margin-left: -15px;
  	width: 100%;
  	background-color: white;
+ 	color: black;
  }
 
 
