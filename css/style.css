@@ -1001,11 +1001,11 @@
 
 		.wrapper.style1 {
 			background-color: #3ba666;
-			-moz-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-			-webkit-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-			-o-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-			-ms-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-			background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
+			-moz-background-image: linear-gradient(60deg, #515A69 50%, #373E45 50%);
+			-webkit-background-image: linear-gradient(60deg, #515A69 50%, #373E45 50%);
+			-o-background-image: linear-gradient(60deg, #515A69 50%, #373E45 50%);
+			-ms-background-image: linear-gradient(60deg, #515A69 50%, #373E45 50%);
+			background-image: linear-gradient(60deg, #515A69 50%, #373E45 50%);
 			color: #ffffff;
 		}
 
@@ -1093,5 +1093,6 @@
 
 #navbar-logo {
   width: auto;
-  height: 36px;
+  height: 60%;
+  margin-top: 20px;
   }
